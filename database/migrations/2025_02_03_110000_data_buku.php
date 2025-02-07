@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('data_buku', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            // $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            // $table->unsignedBigInteger('category_id');
+            $table->foreignId('category_id')->constrained(
+                table: 'categories',
+                indexName: 'buku_categories_id'
+            );
             $table->string('judul');
             $table->string('penulis');
             $table->string('penerbit');
-            $table->integer('harga');
+            // $table->integer('harga');
             $table->text('deskripsi');
         });
     }
