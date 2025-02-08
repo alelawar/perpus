@@ -19,11 +19,11 @@ class DataPeminjamFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Membuat user baru atau ambil dari seeder
-            'buku_id' => DataBuku::factory(), // Membuat buku baru atau ambil dari seeder
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
+            'buku_id' => DataBuku::inRandomOrder()->first()->id ?? DataBuku::factory(),
             'tanggal_peminjam' => now(), // Waktu peminjaman saat ini
-            'tanggal_pengembalian' => $this->faker->optional(0.5)->dateTimeBetween('+3 days', '+14 days'), // 50% kemungkinan diisi
-            'status' => $this->faker->randomElement(['belum dikembalikan', 'sudah dikembalikan']), // Pilih status secara acak
+            'tanggal_pengembalian' => now()->addDays(30),
+            'status' => 'belum dikembalikan'
         ];
     }
 }

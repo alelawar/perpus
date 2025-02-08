@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\DataBuku;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DataBukuSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class DataBukuSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DataBuku::factory(20)->create();
     }
 }
