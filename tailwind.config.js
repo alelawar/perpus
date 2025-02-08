@@ -11,6 +11,14 @@ export default {
     ],
     theme: {
         extend: {
+
+            colors: {
+                'primer-color' : '#102D4D',
+                'skunder-color' : '#4072AF',
+                'tersier-color' : '#DAE2EF',
+                'background-color' : '#F9F7F8'
+            },
+
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
