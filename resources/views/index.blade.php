@@ -51,54 +51,29 @@
         </div>
         <!-- End Slider -->
 
+        
         <!-- Card -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10 mx-5">
             <!-- Kartu 1 -->
+            @forelse ( $books as $book )
             <div class="bg-white rounded-lg shadow-lg p-2">
+                @if ($book->cover)
                 <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+                @else
+                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+                @endif
                 <div class="">
-                    <h2 class="text-xl font-bold -mb-1">Kartu 1</h2>
-                    <p class="text-gray-700 mb-2">Penulis</p>
+                    <h2 class="text-xl font-bold -mb-1">{{ $book->judul }}</h2>
+                    <p class="text-gray-700 mb-2">{{ $book->penulis }}</p>
                 </div>
             </div>
+            @empty
 
-            <!-- Kartu 2 -->
-            <div class="bg-white rounded-lg shadow-lg p-2">
-                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
-                <div class="">
-                    <h2 class="text-xl font-bold -mb-1">Kartu 2</h2>
-                    <p class="text-gray-700 mb-2">Penulis</p>
-                </div>
-            </div>
-
-            <!-- Kartu 3 -->
-            <div class="bg-white rounded-lg shadow-lg p-2">
-                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
-                <div class="">
-                    <h2 class="text-xl font-bold -mb-1">Kartu 3</h2>
-                    <p class="text-gray-700 mb-2">Penulis</p>
-                </div>
-            </div>
-
-            <!-- Kartu 4 -->
-            <div class="bg-white rounded-lg shadow-lg p-2">
-                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
-                <div class="">
-                    <h2 class="text-xl font-bold -mb-1">Kartu 4</h2>
-                    <p class="text-gray-700 mb-2">Penulis</p>
-                </div>
-            </div>
-
-            <!-- Kartu 5 -->
-            <div class="bg-white rounded-lg shadow-lg p-2">
-                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
-                <div class="">
-                    <h2 class="text-xl font-bold -mb-1">Kartu 5</h2>
-                    <p class="text-gray-700 mb-2">Penulis</p>
-                </div>
-            </div>
+            @endforelse
         </div>
         <!-- End Card -->
+            
+        
 
     </div>
 

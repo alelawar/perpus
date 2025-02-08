@@ -21,6 +21,7 @@ class DataBukuFactory extends Factory
            'judul' => fake()->unique()->sentence(4, false),
            'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory(),
            'penulis' => fake()->unique()->sentence(4, false),
+           'cover' => null,
            'penerbit' => fake()->unique()->sentence(4, false),
             'deskripsi' => fake()->unique()->paragraph(4, false),
         ];

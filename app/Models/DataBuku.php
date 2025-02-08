@@ -12,4 +12,14 @@ class DataBuku extends Model
     protected $table = 'data_buku'; // Nama tabel, jika tidak mengikuti konvensi Laravel
     public $timestamps = false; // Menonaktifkan timestamp
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function peminjaman()
+    {
+        return $this->hasMany(DataPeminjam::class, 'buku_id');
+    }
+
 }

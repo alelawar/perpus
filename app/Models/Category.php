@@ -11,4 +11,9 @@ class Category extends Model
     use HasFactory;
     protected $table = 'categories'; // Nama tabel, jika tidak mengikuti konvensi Laravel
     public $timestamps = false; // Menonaktifkan timestamp
+
+    public function books()
+    {
+        return $this->hasMany(DataBuku::class, 'category_id');
+    }
 }

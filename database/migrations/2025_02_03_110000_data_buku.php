@@ -21,6 +21,7 @@ return new class extends Migration
             );
             $table->string('judul');
             $table->string('penulis');
+            $table->string('cover')->nullable();
             $table->string('penerbit');
             // $table->integer('harga');
             $table->text('deskripsi');

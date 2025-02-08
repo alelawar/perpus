@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\DataBuku;
 use Illuminate\Support\Facades\Route;
 
-Route::get('index', function () {
-    return view('index');
+Route::get('/', function () {
+    return view('index',[
+        'books' => DataBuku::select('judul', 'penulis', 'cover')->get()
+    ] );
 });
