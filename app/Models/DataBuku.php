@@ -22,4 +22,8 @@ class DataBuku extends Model
         return $this->hasMany(DataPeminjam::class, 'buku_id');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug'; 
+    }
 }

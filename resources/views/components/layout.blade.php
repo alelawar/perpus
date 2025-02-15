@@ -52,10 +52,12 @@
                 <div class="text-skunder-color mt-2 text-[30px]">
                     <h1>Beranda</h1>
                 </div>
-                <div class="p-2.5 mt-3 flex items-center rounded-full px-4 duration-300 cursor-pointer bg-tersier-color shadow-md">
-                    <i class="bi bi-search text-sm"></i>
-                    <input class="text-[15px] ml-4 w-full bg-transparent focus:outline-none text-gray-600 placeholder-gray-500" placeholder="Search . . ." />
-                </div>
+                <form action="/search" method="GET">
+                    <div class="p-2.5 mt-3 flex items-center rounded-full px-4 duration-300 cursor-pointer bg-tersier-color shadow-md">
+                        <button type="submit"><i class="bi bi-search text-sm"></i></button>
+                        <input class="text-[15px] ml-4 w-full bg-transparent focus:outline-none text-gray-600 placeholder-gray-500" placeholder="Cari judul buku"  id="search" name="s" autocomplete="off">
+                    </div>
+                </form>
             </div>
         </header>
         <!-- End Header -->

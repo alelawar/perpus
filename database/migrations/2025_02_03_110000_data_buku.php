@@ -20,6 +20,7 @@ return new class extends Migration
                 indexName: 'buku_categories_id'
             );
             $table->string('judul');
+            $table->string('slug');
             $table->string('penulis');
             $table->string('cover')->nullable();
             $table->string('penerbit');

@@ -19,8 +19,9 @@ class DataBukuFactory extends Factory
     {;
         return [
            'judul' => fake()->unique()->sentence(4, false),
+           'slug' => fake()->unique()->slug(4, false),
            'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory(),
-           'penulis' => fake()->unique()->sentence(4, false),
+           'penulis' => fake()->unique()->name(),
            'cover' => null,
            'penerbit' => fake()->unique()->sentence(4, false),
             'deskripsi' => fake()->unique()->paragraph(4, false),
