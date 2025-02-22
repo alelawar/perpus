@@ -1,10 +1,9 @@
 <x-layout>
 
-
     <div>
 
         <!-- Slider -->
-        <div class="max-w-full mx-auto mb-10">
+        <div class="max-w-full mx-auto mt-5">
 
             <div id="default-carousel" class="relative" data-carousel="static">
                 <!-- Carousel wrapper -->
@@ -51,29 +50,34 @@
         </div>
         <!-- End Slider -->
 
-        
         <!-- Card -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10 mx-5">
-            <!-- Kartu 1 -->
-            @forelse ( $books as $book )
-            <div class="bg-white rounded-lg shadow-lg p-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10 mx-5 mt-10">
+            @forelse ($books as $book)
+            <div class="bg-white rounded-lg shadow-lg p-2 flex flex-col justify-between h-full relative">
                 @if ($book->cover)
                 <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                 @else
                 <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                 @endif
-                <div class="">
-                    <h2 class="text-xl font-bold -mb-1">{{ $book->judul }}</h2>
-                    <p class="text-gray-700 mb-2">{{ $book->penulis }}</p>
+                <div class="text-left mb-7">
+                    <h2 class="text-lg font-bold -mb-1">{{ $book->judul }}</h2>
+                    <p class="text-sm text-gray-700 mb-2">{{ $book->penulis }}</p>
                 </div>
+                <!-- Wishlist Button -->
+                <button @click="wishlist = !wishlist" x-data="{ wishlist: false }"
+                    class="text-red-500 text-2xl absolute bottom-2 right-2">
+                    <span x-show="!wishlist"><i class="bi bi-heart"></i></span>
+                    <span x-show="wishlist"><i class="bi bi-heart-fill"></i></span>
+                </button>
             </div>
             @empty
-
             @endforelse
         </div>
         <!-- End Card -->
-            
-        
+
+
+
+
 
     </div>
 
