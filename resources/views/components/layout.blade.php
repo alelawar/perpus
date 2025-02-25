@@ -83,11 +83,21 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bottom-4 bg-skunder-color text-white font-bold py-2 w-1/2 rounded-full shadow-xl cursor-pointer mb-10 mx-auto hover:bg-transparent hover:text-skunder-color hover:ring-2 transition duration-500">
+            @guest
+                <a href="/login" class="bottom-4 bg-skunder-color text-white font-bold py-2 w-1/2 rounded-full shadow-xl cursor-pointer mb-10 mx-auto hover:bg-transparent hover:text-skunder-color hover:ring-2 transition duration-500 text-center">
                     Login
-                </div>
+                </a>
             </div>
+            @endguest
+            @auth
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="bottom-4 bg-skunder-color text-white font-bold py-2 w-1/2 rounded-full shadow-xl cursor-pointer mb-10 mx-auto hover:bg-transparent hover:text-skunder-color hover:ring-2 transition duration-500 text-center">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            @endauth
         </aside>
         <!-- End Aside -->
     </div>

@@ -3,6 +3,24 @@
 use App\Models\DataBuku;
 use Illuminate\Routing\RouteUrlGenerator;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use GuzzleHttp\Middleware;
+
+//route register
+Route::get('auth/register', [RegisterController::class, 'showRegisterForm']);
+Route::post('auth/register', [RegisterController::class, 'register'])->name('register');
+
+//route login
+Route::get('auth/login', [LoginController::class, 'showLoginForm'])->middleware('guest');
+Route::post('auth/login', [LoginController::class, 'authenticate']);
+
+// Route::middleware('auth')->get('/', function () {
+//     return view('pages/index');
+// });
+
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/search', function () {
     $books = DataBuku::select('judul', 'penulis', 'cover');
@@ -47,11 +65,11 @@ Route::get('usulan', function () {
 
 
 Route::get('register', function () {
-    return view('register');
+    return view('auth/register');
 });
 
 Route::get('login', function () {
-    return view('login');
+    return view('auth/login');
 });
 
 Route::get('viewcard', function () {

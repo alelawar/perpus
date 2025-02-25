@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('penerbit');
             // $table->integer('harga');
             $table->text('deskripsi');
+            $table->integer('token')->nullable();
         });
     }
 
