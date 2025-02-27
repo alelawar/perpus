@@ -23,7 +23,8 @@ class DataPeminjamFactory extends Factory
             'buku_id' => DataBuku::inRandomOrder()->first()->id ?? DataBuku::factory(),
             'tanggal_peminjam' => now(), // Waktu peminjaman saat ini
             'tanggal_pengembalian' => now()->addDays(30),
-            'status' => 'belum dikembalikan'
+            'status' => 'belum dikembalikan',
+            'token' => fake()->randomNumber(6, true), // Pastikan 6 digit dengan `true`
         ];
     }
 }

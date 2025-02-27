@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('data_buku', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            // $table->unsignedBigInteger('category_id');
             $table->foreignId('category_id')->constrained(
                 table: 'categories',
                 indexName: 'buku_categories_id'
@@ -24,9 +22,14 @@ return new class extends Migration
             $table->string('penulis');
             $table->string('cover')->nullable();
             $table->string('penerbit');
-            // $table->integer('harga');
             $table->text('deskripsi');
-            $table->integer('token')->nullable();
+            $table->bigInteger('isbn');
+            $table->bigInteger('halaman');
+            $table->string('bahasa');
+            $table->string('panjang');
+            $table->string('lebar');
+            $table->string('berat');
+            $table->timestamps();
         });
     }
 

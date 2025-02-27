@@ -1,26 +1,22 @@
 <x-html>
 
-    @if(session('success'))
-    <div x-data="{ show: true }"
-         x-init="setTimeout(() => show = false, 3000)"
-         x-show="show"
-         class="fixed inset-0 flex items-center justify-center bg-black/50">
-        <div class="bg-primer-color text-white px-6 py-3 rounded-lg shadow-lg">
-            <i class="bi bi-check2"></i> {{ session('success') }}
+    @if (session('success'))
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+            class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
+            <div class="bg-primer-color  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+                <i class="bi bi-check2"></i> {{ session('success') }}
+            </div>
         </div>
-    </div>
-@endif
+    @endif
 
-@if (session('loginError'))
-    <div x-data="{ show: true }"
-         x-init="setTimeout(() => show = false, 3000)"
-         x-show="show"
-         class="fixed inset-0 flex items-center justify-center bg-black/50">
-        <div class="bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg">
-            <i class="bi bi-exclamation-triangle"></i> {{ session('loginError') }}
+    @if (session('loginError'))
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
+            class="fixed inset-0 flex items-center justify-center bg-black/50">
+            <div class="bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg">
+                <i class="bi bi-exclamation-triangle"></i> {{ session('loginError') }}
+            </div>
         </div>
-    </div>
-@endif
+    @endif
 
     <div class="flex items-center justify-center min-h-screen mx-auto">
         <div
@@ -52,10 +48,10 @@
                         </span>
                         <input name="email"
                             class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-skunder-color bg-transparent @error('email') is-invalid @enderror"
-                            placeholder="Email" type="email" autofocus required value="{{ old ('email') }}"/>
-                            @error('email')
+                            placeholder="Email" type="email" autofocus required value="{{ old('email') }}" />
+                        @error('email')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
+                        @enderror
                     </div>
                     <div class="relative bg-tersier-color rounded-lg">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 bg-transparent">

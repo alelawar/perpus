@@ -1,26 +1,20 @@
 <?php
 
 use App\Models\DataBuku;
-use Illuminate\Routing\RouteUrlGenerator;
+use GuzzleHttp\Middleware;
+use App\Models\DataPeminjam;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use Illuminate\Routing\RouteUrlGenerator;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\RegisterController;
-use GuzzleHttp\Middleware;
-
-//route register
-Route::get('auth/register', [RegisterController::class, 'showRegisterForm']);
-Route::post('auth/register', [RegisterController::class, 'register'])->name('register');
-
-//route login
-Route::get('auth/login', [LoginController::class, 'showLoginForm'])->middleware('guest');
-Route::post('auth/login', [LoginController::class, 'authenticate']);
-
-// Route::middleware('auth')->get('/', function () {
-//     return view('pages/index');
-// });
 
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/', function () {
+    return view('pages/index', [
+        'books' => DataBuku::select('id','judul', 'slug' ,'penulis', 'cover')->paginate(15)
+    ])->with('pageTitle', 'Beranda');
+})->name('beranda');
 
 Route::get('/search', function () {
     $books = DataBuku::select('judul', 'penulis', 'cover');
@@ -34,16 +28,13 @@ Route::get('/search', function () {
     ]);
 });
 
-Route::get('/', function () {
-    return view('pages/index', [
-        'books' => DataBuku::select('judul', 'penulis', 'cover')->get()
-    ])->with('pageTitle', 'Beranda');
-})->name('beranda');
 
 Route::get('terbaru', function () {
+
     return view('pages/terbaru', [
-        'books' => DataBuku::select('judul', 'penulis', 'cover')->get()
+        'books' => DataBuku::select('judul', 'penulis', 'cover')->latest()->take(10)->get()
     ])->with('pageTitle', 'Buku Terbaru');
+
 })->name('buku Terbaru');
 
 Route::get('trending', function () {
@@ -62,16 +53,34 @@ Route::get('usulan', function () {
 })->name('usulan Buku');
 
 
-
-
-Route::get('register', function () {
-    return view('auth/register');
+Route::get('view/{buku:slug}', function (DataBuku $buku) {
+    return view('viewCard', ["buku" => $buku]);
 });
 
-Route::get('login', function () {
-    return view('auth/login');
+// register routes
+Route::get('/auth/register', [RegisterController::class, 'showRegisterForm']);
+Route::post('/auth/register', [RegisterController::class, 'register'])->name('register');
+
+// login routes
+Route::get('auth/login', [LoginController::class, 'showLoginForm'])->middleware('guest')->name('login');
+Route::post('auth/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+// account routes
+Route::get('/user', function () {
+    return view('user.profile');
+})->middleware('auth');
+
+Route::get('/user/pinjaman', function () {
+    return view('user.pinjaman', [
+        "pinjaman" => DataPeminjam::with('buku')->where('user_id', auth()->user()->id)->latest()->get()
+    ]);
+})->middleware('auth');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user/wishlist', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/user/wishlist/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+    Route::delete('/user/wishlist/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 
-Route::get('viewcard', function () {
-    return view('viewCard');
-});

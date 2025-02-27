@@ -10,8 +10,6 @@ class DataBuku extends Model
     /** @use HasFactory<\Database\Factories\DataBukuFactory> */
     use HasFactory;
     protected $table = 'data_buku'; // Nama tabel, jika tidak mengikuti konvensi Laravel
-    public $timestamps = false; // Menonaktifkan timestamp
-
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -24,6 +22,11 @@ class DataBuku extends Model
 
     public function getRouteKeyName()
     {
-        return 'slug'; 
+        return 'slug';
+    }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }

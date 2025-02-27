@@ -10,7 +10,6 @@ class DataPeminjam extends Model
     /** @use HasFactory<\Database\Factories\DataPeminjamFactory> */
     use HasFactory;
     protected $table = 'data_peminjam'; // Nama tabel, jika tidak mengikuti konvensi Laravel
-    public $timestamps = false; // Menonaktifkan timestamp
 
 
     public function user()

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,13 +19,19 @@ class DataBukuFactory extends Factory
     public function definition(): array
     {;
         return [
-           'judul' => fake()->unique()->sentence(4, false),
-           'slug' => fake()->unique()->slug(4, false),
-           'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory(),
-           'penulis' => fake()->unique()->name(),
-           'cover' => null,
-           'penerbit' => fake()->unique()->sentence(4, false),
+            'judul' => fake()->unique()->sentence(4, false),
+            'slug' => Str::slug(fake()->sentence(4, false)),
+            'category_id' => Category::inRandomOrder()->value('id') ?? Category::factory()->create()->id,
+            'penulis' => fake()->unique()->name(),
+            'cover' => null,
+            'penerbit' => fake()->unique()->company(),
             'deskripsi' => fake()->unique()->paragraph(4, false),
+            'isbn' => fake()->unique()->numerify('#############'), // 13 digit ISBN
+            'halaman' => fake()->numberBetween(50, 1000),
+            'bahasa' => fake()->languageCode(),
+            'panjang' => fake()->randomFloat(1, 10, 30), // Panjang antara 10 - 30 cm
+            'lebar' => fake()->randomFloat(1, 10, 30), // Lebar antara 10 - 30 cm
+            'berat' => fake()->randomFloat(2, 0.1, 2), // Berat antara 0.1 - 2 kg
         ];
     }
 }

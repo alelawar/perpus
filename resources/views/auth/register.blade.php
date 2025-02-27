@@ -8,7 +8,7 @@
             </h1>
 
             <div>
-                <form action="auth/register" method="POST" class="space-y-4 mt-5">
+                <form action="/auth/register" method="POST" class="space-y-4 mt-5">
                     @csrf {{-- Token untuk keamanan Laravel --}}
                     <div class="grid grid-cols-2 gap-4">
                         <!-- Kolom Kiri -->

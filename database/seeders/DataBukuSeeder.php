@@ -13,6 +13,6 @@ class DataBukuSeeder extends Seeder
      */
     public function run(): void
     {
-        DataBuku::factory(20)->create();
+        DataBuku::factory(100)->create();
     }
 }

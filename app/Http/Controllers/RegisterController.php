@@ -13,7 +13,7 @@ class RegisterController extends Controller
 
     public function showRegisterForm()
     {
-        return view('auth/register');
+        return view('/auth/register');
     }
 
     public function register(Request $request)
@@ -34,8 +34,8 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Berhasil buat akun!, mohon login');
+        return redirect('/auth/login')->with('success', 'Berhasil buat akun!, mohon login');
 
-        return redirect('/login');
+        return redirect('/auth/login');
     }
 }

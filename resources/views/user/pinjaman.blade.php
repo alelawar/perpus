@@ -1,0 +1,48 @@
+<x-layout>
+    <div class="flex h-screen bg-gray-200">
+        <x-sidebar></x-sidebar>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <header class="flex items-center justify-between">
+                <h2 class="text-2xl font-semibold">Pinjaman | {{ auth()->user()->fullname }}</h2>
+                {{-- <div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Add New</button>
+                </div> --}}
+            </header>
+
+            <main class="mt-6">
+                <div class="w-full overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">No</th>
+                                <th class="py-3 px-6 text-left">Nama Buku</th>
+                                <th class="py-3 px-6 text-left">Tanggal Pinjaman</th>
+                                <th class="py-3 px-6 text-left">Tanggal pengembalisan</th>
+                                <th class="py-3 px-6 text-left">Token</th>
+                                <th class="py-3 px-6 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-600 text-sm font-light">
+                            @forelse ($pinjaman as $index => $p)
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-left">{{ $index + 1 }}</td>
+                                    <td class="py-3 px-6 text-left"><a href="/view/{{ $p->buku->slug }}">{{ $p->buku->judul }}</a></td>
+                                    <td class="py-3 px-6 text-left">{{ \Carbon\Carbon::parse($p->tanggal_peminjam)->format('d-m-Y') }}</td>
+                                    <td class="py-3 px-6 text-left">{{ \Carbon\Carbon::parse($p->tanggal_pengembalian)->format('d-m-Y') }}</td>
+                                    <td class="py-3 px-6 text-left">{{ $p->token }}</td>
+                                    <td class="py-3 px-6 text-left font-semiboldf">{{ $p->status }}</td> {{-- GW MAU KALO STATUSNYA BELUM DIKEMBALIKAN TEKSNYA MERAH HEHE, KALO SEBALIKNYA IJO --}}
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="py-3 px-6 text-center text-gray-500">Tidak ada data pinjaman.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+</x-layout>
