@@ -30,7 +30,6 @@
               </div>
             </div>
           </div>
-
           <div>
             <a href="">Lihat Buku ></a>
           </div>
