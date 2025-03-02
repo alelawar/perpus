@@ -12,7 +12,7 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('pages/index', [
-        'books' => DataBuku::select('id','judul', 'slug' ,'penulis', 'cover')->paginate(15)
+        'books' => DataBuku::select('id', 'judul', 'slug', 'penulis', 'cover')->paginate(15)
     ])->with('pageTitle', 'Beranda');
 })->name('beranda');
 
@@ -30,23 +30,16 @@ Route::get('/search', function () {
 
 
 Route::get('terbaru', function () {
-
     return view('pages/terbaru', [
-        'books' => DataBuku::select('judul', 'penulis', 'cover')->latest()->take(10)->get()
+        'books' => DataBuku::select('id', 'judul', 'slug', 'penulis', 'cover')->paginate(15)
     ])->with('pageTitle', 'Buku Terbaru');
-
-})->name('buku Terbaru');
+})->name('Buku Terbaru');
 
 Route::get('trending', function () {
     return view('pages/trending', [
-        'books' => DataBuku::select('judul', 'penulis', 'cover')->get()
+        'books' => DataBuku::select('id', 'judul', 'slug', 'penulis', 'cover')->paginate(15)
     ])->with('pageTitle', 'Trending');
-})->name('trending');
-
-Route::get('wishlist', function () {
-    return view('pages/wishlist')->with('pageTitle', 'Wishlist');
-})->name('wishlist');
-
+})->name('Trending');
 
 Route::get('usulan', function () {
     return view('pages/usulan')->with('pageTitle', 'Usulan Buku');
@@ -54,7 +47,7 @@ Route::get('usulan', function () {
 
 
 Route::get('view/{buku:slug}', function (DataBuku $buku) {
-    return view('viewCard', ["buku" => $buku]);
+    return view('pages/viewCard', ["buku" => $buku]);
 });
 
 // register routes
@@ -84,3 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/user/wishlist/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 
+// tes ajeee
+Route::get('tes', function (DataBuku $buku) {
+    return view('tes')->with('pageTitle', 'Tes');
+})->name('Tes');

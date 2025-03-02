@@ -5,11 +5,11 @@
         {{-- img strt --}}
         <div class="">
             @if ($buku->cover)
-                <div class="h-80 w-72 bg-gray-600 shadow-2xl">
-                    <img src="" alt="">
-                </div>
+            <div class="h-80 w-72 bg-gray-600 shadow-2xl">
+                <img src="" alt="">
+            </div>
             @else
-                <div class="h-80 w-72 bg-gray-600 shadow-2xl"></div>
+            <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg" alt="Cover">
             @endif
         </div>
         {{-- img end --}}
@@ -68,11 +68,11 @@
         {{-- img strt --}}
         <div class="">
             @if ($buku->cover)
-                <div class="h-20 w-16 bg-gray-600 rounded-lg">
-                    <img src="" alt="">
-                </div>
+            <div class="h-20 w-16 bg-gray-600 rounded-lg">
+                <img src="" alt="">
+            </div>
             @else
-                <div class="h-20 w-16 bg-gray-600 rounded-lg"></div>
+            <img src="{{ asset('/img/nocover.jpg') }}" class=" rounded-md h-20 w-16" alt="Cover">
             @endif
         </div>
         {{-- img end --}}
@@ -83,7 +83,7 @@
         </div>
 
         <button
-            class="bg-skunder-color text-white text-base font-semibold rounded-xl hover:bg-transparent hover:text-skunder-color hover:border-blue-300 border-2 hover:ring-1 transition duration-500 px-4 py-2 flex items-center">
+            class="bg-secondary text-white text-base font-semibold rounded-xl hover:bg-transparent hover:text-secondary hover:border-blue-300 border-2 hover:ring-1 transition duration-500 px-4 py-2 flex items-center">
             Pinjam
         </button>
     </div>

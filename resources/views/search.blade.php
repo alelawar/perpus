@@ -72,7 +72,7 @@
                 </div>
             </div>
             @empty
-            <p class="text-center text-gray-500 col-span-full">Tidak ada hasil untuk "{{ request('search') }}"</p>
+            <p class="text-center text-gray-500 col-span-full">Tidak ada hasil untuk "{{ request('s') }}"</p>
             @endforelse
         </div>
         <!-- End Card -->

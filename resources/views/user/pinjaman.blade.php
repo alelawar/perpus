@@ -1,18 +1,13 @@
-<x-layout>
-    <div class="flex h-screen bg-gray-200">
-        <x-sidebar></x-sidebar>
-
+<x-sidebar>
+    <div class="flex h-screen">
         <!-- Main Content -->
-        <div class="flex-1 p-6">
+        <div class="flex-1 px-6">
             <header class="flex items-center justify-between">
-                <h2 class="text-2xl font-semibold">Pinjaman | {{ auth()->user()->fullname }}</h2>
-                {{-- <div>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Add New</button>
-                </div> --}}
+                <h2 class="text-2xl font-medium -mt-6">Pinjaman | {{ auth()->user()->fullname }}</h2>
             </header>
 
             <main class="mt-6">
-                <div class="w-full overflow-x-auto">
+                <div class="w-full overflow-x-auto border-gray-300">
                     <table class="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
@@ -45,4 +40,4 @@
             </main>
         </div>
     </div>
-</x-layout>
+</x-sidebar>

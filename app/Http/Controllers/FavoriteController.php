@@ -21,13 +21,13 @@ class FavoriteController extends Controller
 
         if ($favorite) {
             $favorite->delete();
-            session()->flash('status', 'Berhasil di hapus dari favorit');
+            session()->flash('status', 'Berhasil di hapus dari wishlist');
         } else {
             Favorite::create([
                 'user_id' => auth()->id(),
                 'book_id' => $request->book_id
             ]);
-            session()->flash('status', 'Berhasil menambahkan ke favorit');
+            session()->flash('status', 'Berhasil menambahkan ke wishlist');
         }
 
         return back();

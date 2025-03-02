@@ -1,32 +1,49 @@
-<x-layout>
-    <div class="flex h-screen bg-gray-200">
-        <x-sidebar></x-sidebar>
+<x-sidebar>
 
-        <!-- Main Content -->
-        <div class="flex-1 p-6">
-            <header class="flex items-center justify-between">
-                <h2 class="text-2xl font-semibold">Profile | {{ auth()->user()->fullname }}</h2>
-                {{-- <div>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Add New</button>
-                </div> --}}
-            </header>
+  <div class="flex h-screen">
 
-            <main class="mt-6">
-                <div class="w-full">
+    <!-- Main Content -->
+    <div class="flex-1 px-6">
 
-                    <div class="flex justify-between p-2">
-                        <div class="">
-                            <p class="mb-4">Uername : {{ auth()->user()->username }}</p>
-                            <p class="mb-4">Email : {{ auth()->user()->email }}</p>
-                        </div>
-                        <div>
-                            <p class="mb-4">Nama Lengkap : {{ auth()->user()->fullname }}</p>
-                            <p class="mb-4">No Telp : {{ auth()->user()->telepon }}</p>
-                        </div>
-                        {{-- NANTI SAMA FE AJA LANJUTIN MALES GW AOWKWOKOAWK --}}
-                    </div>
-                </div>
-            </main>
+      <header class="flex items-center justify-between">
+        <h2 class="text-2xl font-medium -mt-6">Profile | {{ auth()->user()->fullname }}</h2>
+      </header>
+
+      <main class="mt-6 w-full">
+        <div class="p-2">
+          <div class="flex border-2 border-gray-300 p-6 rounded-md">
+            <div>
+              <div class="w-32 h-32 bg-slate-600 rounded-full"></div>
+              <div class="flex justify-end -mt-12">
+                <i class="bi bi-camera shadow-lg bg-white px-4 py-3 rounded-full"></i>
+              </div>
+            </div>
+
+            <div class="ml-10">
+              <p class="text-2xl font-medium">{{ auth()->user()->username }}</p>
+              <p class="text-xl text-gray-500">{{ auth()->user()->email }}</p>
+            </div>
+          </div>
+
+          <div class="mt-6 text-lg text-gray-500 border-2 border-gray-300 p-6 rounded-md">
+            <h1 class="text-black text-xl font-medium">Informasi Pribadi</h1>
+            <div class="flex space-x-20">
+              <div>
+                <p>Nama Lengkap</p>
+                <p>No Telepon</p>
+                <p>Alamat</p>
+              </div>
+              <div>
+                <p>{{ auth()->user()->fullname }}</p>
+                <p>{{ auth()->user()->telepon }}</p>
+                <p>{{ auth()->user()->alamat }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+        
+      </main>
+
     </div>
-</x-layout>
+  </div>
+</x-sidebar>
