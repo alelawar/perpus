@@ -6,7 +6,7 @@
         <div class="">
             @if ($buku->cover)
             <div class="h-80 w-72 bg-gray-600 shadow-2xl">
-                <img src="" alt="">
+                <img src="{{ asset('storage/' . $buku->cover) }}" alt="">
             </div>
             @else
             <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg" alt="Cover">
@@ -17,6 +17,8 @@
         <div class="ml-10 w-full">
             <h1 class="text-4xl font-semibold">{{ $buku->judul }}</h1>
             <h2 class="text-xl font-medium text-gray-600 mb-5 ">{{ $buku->penulis }}</h2>
+            <h2 class="text-lg font-semibold text-justify mb-2">Kategori :             <a href="/category/{{ $buku->category->slug }}" class="text-base font-normal text-gray-600">{{ $buku->category->name }}</a >
+            </h2>
             <h2 class="text-lg font-semibold text-justify">Deskripsi :</h2>
             <p class="text-base font-normal text-gray-600">{{ $buku->deskripsi }}</p>
 
@@ -69,7 +71,7 @@
         <div class="">
             @if ($buku->cover)
             <div class="h-20 w-16 bg-gray-600 rounded-lg">
-                <img src="" alt="">
+                <img src="{{ asset('storage/' . $buku->cover) }}" alt="">
             </div>
             @else
             <img src="{{ asset('/img/nocover.jpg') }}" class=" rounded-md h-20 w-16" alt="Cover">
@@ -82,10 +84,10 @@
             <h3 class="text-xs text-gray-600 mb-5 ">{{ $buku->penulis }}</h3>
         </div>
 
-        <button
+        <a href="/pinjam/{{ $buku->slug }}"
             class="bg-secondary text-white text-base font-semibold rounded-xl hover:bg-transparent hover:text-secondary hover:border-blue-300 border-2 hover:ring-1 transition duration-500 px-4 py-2 flex items-center">
             Pinjam
-        </button>
+        </a >
     </div>
 
 

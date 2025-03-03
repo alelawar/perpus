@@ -1,4 +1,7 @@
 <x-sidebar>
+    
+
+    {{-- content --}}
     <div class="flex h-screen">
         <!-- Main Content -->
         <div class="flex-1 px-6">
@@ -17,6 +20,7 @@
                                 <th class="py-3 px-6 text-left">Tanggal pengembalisan</th>
                                 <th class="py-3 px-6 text-left">Token</th>
                                 <th class="py-3 px-6 text-left">Status</th>
+                                <th class="py-3 px-6 text-left">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
@@ -28,6 +32,7 @@
                                     <td class="py-3 px-6 text-left">{{ \Carbon\Carbon::parse($p->tanggal_pengembalian)->format('d-m-Y') }}</td>
                                     <td class="py-3 px-6 text-left">{{ $p->token }}</td>
                                     <td class="py-3 px-6 text-left font-semiboldf">{{ $p->status }}</td> {{-- GW MAU KALO STATUSNYA BELUM DIKEMBALIKAN TEKSNYA MERAH HEHE, KALO SEBALIKNYA IJO --}}
+                                    <td class="py-3 px-6 text-left font-semiboldf hover:text-black hover:underline"><a href="/user/pinjaman/detail/{{ $p->token }}">Detail</a></td>
                                 </tr>
                             @empty
                                 <tr>

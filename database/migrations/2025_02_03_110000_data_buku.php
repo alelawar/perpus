@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('panjang');
             $table->string('lebar');
             $table->string('berat');
+            $table->string('tanggal_terbit')->nullable();
             $table->timestamps();
         });
     }

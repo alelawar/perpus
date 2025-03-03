@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('buku_id')->constrained('data_buku')->onDelete('cascade');  // Relasi ke 
             $table->timestamp('tanggal_peminjam')->useCurrent();  // Waktu peminjaman otomatis diisi
             $table->timestamp('tanggal_pengembalian')->nullable();  // Waktu pengembalian, diisi oleh admin
-            $table->enum('status', ['belum dikembalikan', 'sudah dikembalikan'])->default('belum dikembalikan');  // Status peminjaman
+            $table->enum('status', ['belum dikembalikan', 'telah diambil' ,'sudah dikembalikan'])->default('belum dikembalikan');  // Status peminjaman
             $table->integer('token')->unique();
             $table->timestamps();  // Created at, updated at
         });

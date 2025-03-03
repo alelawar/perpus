@@ -21,7 +21,7 @@
       <a href="view/{{ $book->slug }}">
         <div class="bg-white rounded-lg p-2 flex flex-col justify-between h-full relative shadow-md hover:shadow-2xl transition duration-300">
           @if ($book->cover)
-          <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+          <img src="{{ asset('storage/' . $book->cover) }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
           @else
           <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
           @endif

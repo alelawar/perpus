@@ -11,6 +11,8 @@ class DataPeminjam extends Model
     use HasFactory;
     protected $table = 'data_peminjam'; // Nama tabel, jika tidak mengikuti konvensi Laravel
 
+    protected $guarded = ['id'];
+
 
     public function user()
     {

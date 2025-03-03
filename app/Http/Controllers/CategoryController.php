@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    use AuthorizesRequests; //PAKE INI PENTING SOALNYA
+
+     public function __construct()
+     {
+         $this->authorize('admin');
+     }
     public function index()
     {
-        //
+        return view('user.admin.category', [
+            'categories' => Category::orderBy('name')->get()
+        ]);
     }
 
     /**
@@ -27,9 +38,17 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $valid = $request->validate([
+            'name' => 'required|unique:categories,name',
+            'slug' => 'required|unique:categories,slug',
+        ]);
+
+        Category::create($valid);
+
+        return redirect('/category')->with('success', 'Category baru berhasil ditambahkan!');       
+
     }
 
     /**
@@ -51,7 +70,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -61,6 +80,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/category')->with('success', 'Category Berhasil dihapus!');
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->judul);
+        return response()->json(['slug' => $slug]);
     }
 }
