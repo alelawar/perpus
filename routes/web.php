@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PinjamanController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::get('/search', function () {
     $books = DataBuku::select('judul', 'penulis', 'cover');
 
     if (request('s')) {
-        $books->where('judul', 'like', '%' . request('s') . '%')->orWhere('penulis', 'like', '%' . request('s') . '%');
+        $books->where('judul', 'like', '%' . request('s') . '%')->orWhere('penulis','fullname', 'like', '%' . request('s') . '%');
     }
 
     return view('search', [
@@ -79,13 +80,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/user', function () {
         return view('user.profile');
     })->middleware('auth');
-    
+
+    Route::middleware('auth')->group(function () {
+        Route::get('user.profile_edit', [ProfileController::class, 'edit']);
+        Route::put('/user', [ProfileController::class, 'update'])->name('profile.update');
+    })->middleware('auth');
+
     Route::get('/user/pinjaman', function () {
         return view('user.pinjaman', [
-            "pinjaman" => DataPeminjam::with('buku')->where('user_id', auth()->user()->id)->latest()->get()
+            "pinjaman" => DataPeminjam::with('buku')->where('user_id', auth()->User()->id)->latest()->get()
         ]);
     })->middleware('auth');
-    
+
     Route::middleware('auth')->group(function () {
         Route::get('/user/wishlist', [FavoriteController::class, 'index'])->name('favorites.index');
         Route::post('/user/wishlist/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
@@ -109,7 +115,7 @@ Route::middleware('auth')->group(function () {
     // ROUTE USER KHUSUS ADMIN
     Route::get('/dashboard/books/checkSlug', [AdminController::class, 'checkSlug']);
     Route::resource('/dashboard', AdminController::class)->except('show')->parameters(['dashboard' => 'dataBuku']);
-    
+
     // RUTE CATEGORY
     Route::get('/category/books/checkSlug', [CategoryController::class, 'checkSlug']);
     Route::resource('/category', CategoryController::class)->except('show', 'create ','update', 'edit');

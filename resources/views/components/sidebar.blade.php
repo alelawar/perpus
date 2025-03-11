@@ -18,12 +18,16 @@
                     <h1 class="text-base font-semibold text-black">Welcome! {{ auth()->user()->fullname }}</h1>
                     <button @click="open = false" class="text-2xl text-primary -mt-1">✖</button>
                 </div>
-
+                {{-- User Only --}}
                 <div class="flex flex-col h-screen mt-5">
                     <nav class="space-y-4">
                         <a href="/user" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user') ? 'text-secondary font-semibold' : '' }}">
                             <i class="bi bi-person text-primary"></i>
                             <span class="ml-2">Profile</span>
+                        </a>
+                        <a href="user.profile_edit" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user/') ? 'text-secondary font-semibold' : '' }}">
+                            <i class="bi bi-person text-primary"></i>
+                            <span class="ml-2">Edit Profile</span>
                         </a>
                         <a href="/user/pinjaman" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user/pinjaman') ? 'text-secondary font-semibold' : '' }}">
                             <i class="bi bi-inbox text-primary"></i>

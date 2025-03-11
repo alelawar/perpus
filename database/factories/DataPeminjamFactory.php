@@ -21,6 +21,7 @@ class DataPeminjamFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
             'buku_id' => DataBuku::inRandomOrder()->first()->id ?? DataBuku::factory(),
+            'name' => fake()->name(),
             'tanggal_peminjam' => now(), // Waktu peminjaman saat ini
             'tanggal_pengembalian' => now()->addDays(30),
             'status' => 'belum dikembalikan',

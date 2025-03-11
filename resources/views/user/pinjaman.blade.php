@@ -1,12 +1,12 @@
 <x-sidebar>
-    
+
 
     {{-- content --}}
     <div class="flex h-screen">
         <!-- Main Content -->
         <div class="flex-1 px-6">
             <header class="flex items-center justify-between">
-                <h2 class="text-2xl font-medium -mt-6">Pinjaman | {{ auth()->user()->fullname }}</h2>
+                <h2 class="text-2xl font-medium -mt-6">Pinjaman | {{ auth()->user()->name }}</h2>
             </header>
 
             <main class="mt-6">
