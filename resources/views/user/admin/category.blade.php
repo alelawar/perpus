@@ -2,7 +2,7 @@
     @if (session('success'))
     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 1000)" x-show="show"
         class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
-        <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+        <div class="bg-green-500  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
             <i class="bi bi-check2"></i> {{ session('success') }}
         </div>
     </div>
@@ -24,7 +24,7 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         @error('slug')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }} // Kamu mengetik terlalu cepat</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }} // Masukan Kategori</p>
                         @enderror
                     </div>
                     {{-- SLUG --}}
@@ -39,7 +39,7 @@
             </div>
     </div>
     {{-- SUBMIT --}}
-    <div class="flex justify-end">
+    <div class="-mt-2">
         <button type="submit"
             class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
             Buat
@@ -49,7 +49,7 @@
     {{-- END FORM --}}
 
     {{-- MAIN CATEGORY START --}}
-    <main class="mt-6">
+    <main class="mt-4">
         <div class="flex flex-col space-y-3">
           {{-- {{ $books->links() }} --}}
           <h1 class="mt-2 mb-5 font-semibold text-xl">List category :</h1>
@@ -71,7 +71,7 @@
             </div>
           </div>
           @empty  
-          <p class="text-gray-500 text-center">Tidak ada data yang tersimpan.</p>
+          <p class="text-gray-500 text-center">Masukan Kategori.</p>
           @endforelse
           {{-- {{ $books->links() }} --}}
 
@@ -85,7 +85,7 @@
 
         judul.addEventListener('change', function() {
             fetch('/category/books/checkSlug?judul=' + judul.value)
-                .then(response => response.json()) // Ubah 'respone' menjadi 'response'
+                .then(response => response.json())
                 .then(data => slug.value = data.slug);
         });
 

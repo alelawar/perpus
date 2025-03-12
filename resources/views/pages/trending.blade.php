@@ -3,7 +3,7 @@
   <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
     class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
     <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
-      <i class="bi bi-check2"></i> {{ session('status') }}
+      <i class="bi bi-"></i> {{ session('status') }}
     </div>
   </div>
   @endif
@@ -21,7 +21,7 @@
       <a href="view/{{ $book->slug }}">
         <div class="bg-white rounded-lg p-2 flex flex-col justify-between h-full relative shadow-md hover:shadow-2xl transition duration-300">
           @if ($book->cover)
-          <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+          <img src="{{ asset('storage/' . $book->cover) }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
           @else
           <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
           @endif

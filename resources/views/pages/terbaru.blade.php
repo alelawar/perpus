@@ -2,7 +2,7 @@
   @if (session('status'))
   <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
     class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
-    <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+    <div class="bg-green-500  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
       <i class="bi bi-check2"></i> {{ session('status') }}
     </div>
   </div>

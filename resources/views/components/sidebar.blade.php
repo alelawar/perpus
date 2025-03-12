@@ -25,8 +25,8 @@
                             <i class="bi bi-person text-primary"></i>
                             <span class="ml-2">Profile</span>
                         </a>
-                        <a href="user.profile_edit" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user/') ? 'text-secondary font-semibold' : '' }}">
-                            <i class="bi bi-person text-primary"></i>
+                        <a href="/user/profile_edit" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user/profile_edit') ? 'text-secondary font-semibold' : '' }}">
+                            <i class="bi bi-person-gear text-primary"></i>
                             <span class="ml-2">Edit Profile</span>
                         </a>
                         <a href="/user/pinjaman" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('user/pinjaman') ? 'text-secondary font-semibold' : '' }}">
@@ -41,16 +41,16 @@
                         @can('admin')
                         <div class="mt-8">
                             <h3 class="font-semibold">Administrator</h3> {{-- KASIH ICON YA RIS YA! --}}
-                            <a href="/dashboard" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('/dashboard/*') ? 'text-secondary font-semibold' : '' }}">
-                                <i class="bi bi-inbox text-primary"></i>
+                            <a href="/dashboard" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('dashboard') ? 'text-secondary font-semibold' : '' }}">
+                                <i class="bi bi-journal-arrow-up text-primary"></i>
                                 <span class="ml-2">Dashboard</span>
                             </a>
-                            <a href="/category" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('/category/*') ? 'text-secondary font-semibold' : '' }}">
-                                <i class="bi bi-inbox text-primary"></i>
+                            <a href="/category" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('category') ? 'text-secondary font-semibold' : '' }}">
+                                <i class="bi bi-list-ul text-primary"></i>
                                 <span class="ml-2">Category</span>
                             </a>
-                            <a href="/pinjam" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('/pinjam/*') ? 'text-secondary font-semibold' : '' }}">
-                                <i class="bi bi-inbox text-primary"></i>
+                            <a href="/pinjam" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('pinjam') ? 'text-secondary font-semibold' : '' }}">
+                                <i class="bi bi-inbox-fill text-primary"></i>
                                 <span class="ml-2">Data pinjaman</span>
                             </a>
                         </div>

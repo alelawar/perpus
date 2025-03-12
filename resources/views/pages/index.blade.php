@@ -2,7 +2,7 @@
     @if (session('status'))
     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 1000)" x-show="show"
         class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
-        <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+        <div class="bg-green-500  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
             <i class="bi bi-check2"></i> {{ session('status') }}
         </div>
     </div>
@@ -10,7 +10,7 @@
     <main>
         <!-- Slider -->
         <div class="max-w-full mx-auto mt-5">
-            <div id="default-carousel" class="relative" data-carousel="slide" data-carousel-interval="3000">
+            <div id="default-carousel" class="relative" data-carousel="slide" data-carousel-interval="3500">
                 <!-- Carousel wrapper -->
                 <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                     <!-- Item 1 -->
@@ -68,7 +68,7 @@
             <a href="view/{{ $book->slug }}">
                 <div class="bg-white rounded-lg p-2 flex flex-col justify-between h-full relative shadow-md hover:shadow-2xl transition duration-300">
                     @if ($book->cover)
-                    <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+                    <img src="{{ asset('storage/' . $book->cover) }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                     @else
                     <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                     @endif

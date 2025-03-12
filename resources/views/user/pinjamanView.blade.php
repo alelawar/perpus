@@ -22,7 +22,7 @@
             <div class="ml-4 flex flex-col justify-between">
               <div>
                 <p class="text-lg font-medium">$f->book->judul</p>
-                <p class="text-gray-500">$f->book->penerbit</p>
+                <p class="text-gray-500">$f->book->penulis</p>
               </div>
               <div class="flex gap-2">
                 <i class="bi bi-share bg-white pt-1.5 px-2 rounded-lg shadow-md"></i>

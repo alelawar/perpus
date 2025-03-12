@@ -33,7 +33,7 @@
                     </div>
                     <div>
                         <p class="text-gray-500">Tanggal Terbit</p>
-                        <p class="font-medium">{{ $buku->created_at->diffForHumans() }}</p>
+                        <p class="font-medium">{{ $buku->tanggal_terbit }}</p>
                     </div>
                     <div>
                         <p class="text-gray-500">ISBN</p>
@@ -70,8 +70,8 @@
         {{-- img strt --}}
         <div class="">
             @if ($buku->cover)
-            <div class="h-20 w-16 bg-gray-600 rounded-lg">
-                <img src="{{ asset('storage/' . $buku->cover) }}" alt="">
+            <div class="h-20 w-16 rounded-lg">
+                <img src="{{ asset('storage/' . $buku->cover) }}" alt="" class="h-full rounded-lg">
             </div>
             @else
             <img src="{{ asset('/img/nocover.jpg') }}" class=" rounded-md h-20 w-16" alt="Cover">

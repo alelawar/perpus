@@ -3,7 +3,7 @@
     @if (session('success'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
             class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
-            <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+            <div class="bg-green-500  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
                 <i class="bi bi-check2"></i> {{ session('success') }}
             </div>
         </div>
@@ -20,7 +20,7 @@
 
     <div class="flex items-center justify-center min-h-screen mx-auto">
         <div
-            class="flex w-[1000px] h-[480px] shadow-lg rounded-2xl overflow-hidden bg-[url('https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3893.jpg?t=st=1739927988~exp=1739931588~hmac=e50107499c04e8dc3326e2278fea890054ab0fe068fb5a38e17c6d2ef2c7b260&w=1380')] bg-cover bg-center justify-center items-center">
+            class="flex w-[1000px] h-[480px] shadow-lg rounded-2xl overflow-hidden bg-[url('{{ asset('/img/bg-login.jpg') }}')] bg-cover bg-center justify-center items-center">
 
             <!-- Bagian Kiri -->
             <div class="text-center text-white w-1/2 px-20 h-full flex flex-col justify-center">

@@ -2,11 +2,11 @@
     @if (session('success'))
     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
         class="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
-        <div class="bg-secondary  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
+        <div class="bg-green-500  z-50 text-white px-6 py-3 rounded-lg shadow-lg">
             <i class="bi bi-check2"></i> {{ session('success') }}
         </div>
     </div>
-@endif
+    @endif
 
     <div class="flex h-screen">
 
@@ -21,14 +21,11 @@
                 <div class="p-2">
                     <div class="flex border-2 border-gray-300 p-6 rounded-md">
                         <!-- Photo Profile -->
-                        <div class="relative w-32 h-32">
+                        <div class="w-32 h-32">
                             <img src="{{ auth()->user()->profile ? asset('storage/' . auth()->user()->profile) : asset('storage/profile/default-profile.jpg') }}"
-                                class="w-full h-full object-cover rounded-full border-2 border-gray-300">
-                            <label for="avatar"
-                                class="absolute bottom-0 right-0 bg-white p-2 rounded-full cursor-pointer shadow-md">
-                                <i class="bi bi-camera"></i>
-                            </label>
+                                class="w-full h-full object-cover rounded-full border-2 border-gray-300 shadow-sm">
                         </div>
+
 
 
                         <div class="ml-10">

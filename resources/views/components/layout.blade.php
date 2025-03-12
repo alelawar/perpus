@@ -102,7 +102,7 @@
             </div>
             @guest
             <a href="/auth/login"
-                class="bottom-4 bg-secondary text-white font-bold py-2 w-1/2 rounded-full shadow-xl cursor-pointer mb-10 mx-auto hover:bg-transparent hover:text-secondary hover:ring-2 transition-all duration-700 text-center border-b-4 border-blue-900 active:border-none">
+                class="bottom-4 bg-secondary text-white font-bold py-2 w-20 rounded-full shadow-xl cursor-pointer mb-10 mx-auto hover:ring-2 transition-all duration-700 text-center border-b-4 border-blue-900 active:border-none">
                 Login
             </a>
         </div>

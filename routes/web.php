@@ -79,10 +79,10 @@ Route::middleware('auth')->group(function () {
     // ROUTES USER BIASA
     Route::get('/user', function () {
         return view('user.profile');
-    })->middleware('auth');
+    })->middleware('auth')->name('Profile');
 
     Route::middleware('auth')->group(function () {
-        Route::get('user.profile_edit', [ProfileController::class, 'edit']);
+        Route::get('/user/profile_edit', [ProfileController::class, 'edit'])->name('edit Profile');
         Route::put('/user', [ProfileController::class, 'update'])->name('profile.update');
     })->middleware('auth');
 
@@ -90,10 +90,10 @@ Route::middleware('auth')->group(function () {
         return view('user.pinjaman', [
             "pinjaman" => DataPeminjam::with('buku')->where('user_id', auth()->User()->id)->latest()->get()
         ]);
-    })->middleware('auth');
+    })->middleware('auth')->name('pinjaman');
 
     Route::middleware('auth')->group(function () {
-        Route::get('/user/wishlist', [FavoriteController::class, 'index'])->name('favorites.index');
+        Route::get('/user/wishlist', [FavoriteController::class, 'index'])->name('wishlist');
         Route::post('/user/wishlist/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
         Route::delete('/user/wishlist/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     });
@@ -124,5 +124,5 @@ Route::middleware('auth')->group(function () {
 
 // tes ajeee
 Route::get('tes', function (DataBuku $buku) {
-    return view('user.tokenView')->with('pageTitle', 'Tes');
+    return view('tes')->with('pageTitle', 'Tes');
 })->name('Tes');

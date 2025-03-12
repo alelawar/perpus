@@ -5,7 +5,7 @@
 
         <!-- Slider -->
         @if (request('s'))
-            <p>hasil pencarian dari : {{ request('s') }}</p>
+            <p class="mt-5">hasil pencarian dari : {{ request('s') }}</p>
         @else   
         <div class="max-w-full mx-auto mb-10">
 
@@ -62,7 +62,7 @@
             @forelse ( $books as $book )
             <div class="bg-white rounded-lg shadow-lg p-2">
                 @if ($book->cover)
-                <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
+                <img src="{{ asset('storage/' . $book->cover) }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                 @else
                 <img src="{{ asset('/img/nocover.jpg') }}" class="shadow-xl rounded-lg mb-3" alt="Cover">
                 @endif

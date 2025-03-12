@@ -54,7 +54,7 @@ class PinjamanController extends Controller
         // Tambahkan data tambahan otomatis
         $validated['tanggal_dipinjam'] = Carbon::now();
         $validated['tanggal_pengembalian'] = Carbon::now()->addDays(30);
-        $validated['status'] = 'belum dikembalikan';
+        $validated['status'] = 'belum diambil';
         // Generate token unik
         do {
             $token = random_int(100000, 999999);

@@ -83,7 +83,7 @@ class ProfileController extends Controller
         ]);
 
 
-        return redirect()->route('profile.update')->with('success', 'Update Berhasil COY!');
+        return redirect()->route('profile.update')->with('success', 'Profile Berhasil DiUpdate!');
     }
 
     /**
