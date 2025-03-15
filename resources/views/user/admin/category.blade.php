@@ -29,7 +29,7 @@
                     </div>
                     {{-- SLUG --}}
                     <div class="mb-4">
-                        <input type="hidden" id="slug" name="slug" value="{{ old('slug') }}"
+                        <input type="text" id="slug" name="slug" value="{{ old('slug') }}"
                             class="mt-1 block w-full h-10 rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-4 text-lg"
                             required readonly>
                         
