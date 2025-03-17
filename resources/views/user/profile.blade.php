@@ -22,7 +22,7 @@
                     <div class="flex border-2 border-gray-300 p-6 rounded-md">
                         <!-- Photo Profile -->
                         <div class="w-32 h-32">
-                            <img src="{{ auth()->user()->profile ? asset('storage/' . auth()->user()->profile) : asset('storage/profile/default-profile.jpg') }}"
+                            <img src="{{ auth()->user()->profile ? asset('storage/' . auth()->user()->profile) : asset('/img/nopp.png') }}"
                                 class="w-full h-full object-cover rounded-full border-2 border-gray-300 shadow-sm">
                         </div>
 
