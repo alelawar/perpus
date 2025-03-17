@@ -11,30 +11,23 @@
         {{-- FORM BUAT --}}
         <form action="{{ route('category.store') }}" method="POST">
             @csrf
-            <div class="flex justify-between gap-3">
-                <div class="w-full">
-                    {{-- CATEGORY --}}
+            <div class="flex flex-col gap-3">
+                <div x-data="{ name: '', slug: '' }">
+                    {{-- Input Nama Kategori --}}
                     <div class="mb-4">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-700">
                             Category Baru
                         </label>
-                        <input type="text" id="name" name="name" value="{{ old('name') }}"
+                        <input type="text" id="name" name="name" x-model="name"
                             class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" required>
+
                         @error('name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
-                        @error('slug')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }} // Masukan Kategori</p>
-                        @enderror
-                    </div>
-                    {{-- SLUG --}}
-                    <div class="mb-4">
-                        <input type="text" id="slug" name="slug" value="{{ old('slug') }}"
-                            class="mt-1 block w-full h-10 rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-4 text-lg"
-                            required readonly>
-                        
                     </div>
 
+                    {{-- Input Slug (Hidden) --}}
+                    <input type="hidden" id="slug" name="slug" x-model="slug">
                 </div>
             </div>
     </div>
