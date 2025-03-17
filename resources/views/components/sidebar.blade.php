@@ -40,7 +40,10 @@
                         {{-- FITUR CUMA ATMIN YG BISA PAKE *DI DB KASIH VALUE ADMIN === TRUE/1 --}}
                         @can('admin')
                         <div class="mt-8">
-                            <h3 class="font-semibold">Administrator</h3> {{-- KASIH ICON YA RIS YA! --}}
+                            <div class="flex">
+                                <i class="bi bi-person-vcard text-primary mr-3 text-lg"></i>
+                                <h3 class="font-semibold">Administrator</h3>
+                            </div>
                             <a href="/dashboard" class="flex items-center p-2 text-[15px] hover:text-secondary {{ request()->is('dashboard') ? 'text-secondary font-semibold' : '' }}">
                                 <i class="bi bi-journal-arrow-up text-primary"></i>
                                 <span class="ml-2">Dashboard</span>
