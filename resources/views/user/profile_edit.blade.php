@@ -17,7 +17,7 @@
 
                     <div class="space-y-3">
                         <!-- Photo Profile -->
-                        <div x-data="{ preview: '{{ auth()->user()->profile ? asset('storage/' . auth()->user()->profile) : asset('storage/profile/default-profile.jpg') }}' }" class="w-32 h-32">
+                        <div x-data="{ preview: '{{ auth()->user()->profile ? asset('storage/' . auth()->user()->profile) : asset('/img/nopp.png') }}' }" class="w-32 h-32">
                             <!-- Gambar Profil -->
                             <img :src="preview"
                                 class="w-full h-full object-cover rounded-full border-2 border-gray-300 shadow-sm float-start">
